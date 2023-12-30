@@ -21,7 +21,7 @@ export default function Main() {
             <div className="right-part">
                 <div className="signup-container">
                     <h2 className="signup-heading">
-                        Signup/ Login
+                        Signup / Login
                     </h2>
                     <div className='signup-label-container'>
                         <label className='signup-label' htmlFor="email">Your Email ID</label>

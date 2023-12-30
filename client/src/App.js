@@ -1,12 +1,19 @@
-import Home from "./pages/Home";
+import Login from "./pages/Login";
 import './css/app.css';
+import SpeechToText from "./pages/SpeechToText";
+// import SpeechToText from "./pages/SpeechToText";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
     <>
-      <div className="app">
-        <Home></Home>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/speech" element={<SpeechToText />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

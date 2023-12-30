@@ -1,0 +1,44 @@
+.text-container {
+    min-height: 40vh;
+    width: 60%;
+    color: var(--Pure-White, #FFF);
+    font-family: Poppins;
+    font-style: normal;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.micOff {
+    background-color: rgb(234, 18, 18);
+    border-radius: 100%;
+    padding: 1rem;
+}
+
+.micOn {
+    background-color: blue;
+    border-radius: 100%;
+    padding: 1rem;
+}
+
+.listen-status {
+    color: var(--Pure-White, #FFF);
+    font-family: Poppins;
+    font-style: normal;
+    font-size: 1.5rem;
+    background-color: grey;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+}
