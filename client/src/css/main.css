@@ -1,0 +1,111 @@
+.first-text {
+    color: var(--Pure-White, #FFF);
+    /* text-align: center; */
+    font-family: Poppins;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.second-text {
+    color: var(--Pure-White, #FFF);
+    /* text-align: center; */
+    font-family: Poppins;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.left-part {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    height: 85vh;
+}
+
+.right-part {
+    color: var(--Pure-White, #FFF);
+    font-family: Poppins;
+    font-style: normal;
+    width: 30vw;
+    /* margin: auto; */
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+
+    border: 0.2px solid white;
+    border-radius: 25px;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 75%;
+    margin: auto;
+}
+
+.signup-heading {
+    font-size: 2rem;
+    width: 100%;
+    margin: 2rem 0 1.2rem 0;
+}
+
+.signup-label {
+    font-size: 1.2rem;
+}
+
+.signup-label-container {
+    width: 100%;
+    margin: 1.2rem 0 0.5rem 0;
+}
+
+.input-container {
+    width: 100%;
+}
+
+.signup-input {
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+}
+
+.button-container {
+    width: 100%;
+}
+
+.signup-button {
+    width: 100%;
+    border-radius: 0.3125rem;
+    background: #297BCA;
+    color: var(--Pure-White, #FFF);
+    font-family: Poppins;
+    font-size: 1.2rem;
+    padding: 0.6rem 0;
+    margin: 2rem 0 4rem 0;
+    border: none;
+    cursor: pointer;
+}
+.signup-button:hover{
+    background: #10579a;
+    transition: 0.1s;
+}
+.signup-button:active{
+    background: #02172b;
+    transition: 0.1s;
+}
