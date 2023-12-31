@@ -4,6 +4,7 @@ const cors = require('cors');
 const port = 4000
 const User = require('./database');
 const bcrypt = require('bcrypt');
+require('dotenv').config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -16,7 +17,6 @@ app.use(cors());
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const USER = await User.find({ email: email });
-    console.log(USER);
     if (USER.length !== 0) {
         let complete = -1;
         let isMatched = await bcrypt.compare(password, USER[ 0 ].password);

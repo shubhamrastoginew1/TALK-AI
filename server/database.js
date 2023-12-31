@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
-const connect = mongoose.connect('mongodb+srv://shubhamrastogi704:shubhamdb@cluster0.pyyl44d.mongodb.net/');
+require('dotenv').config();
 
+const connect = mongoose.connect(`mongodb+srv://${[ process.env.DB_USERNAME ]}:${process.env.DB_PASSWORD}@cluster0.pyyl44d.mongodb.net/`);
 connect.then(() => {
     console.log("DB connected");
 }).catch((err) => {
     console.log("DB error");
+    console.log(process.env);
 })
 
 const userSchema = new mongoose.Schema({
