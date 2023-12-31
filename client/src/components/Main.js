@@ -1,7 +1,29 @@
 import React from 'react'
 import '../css/main.css';
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Main() {
+    const [ email, setEmail ] = useState('');
+    const [ pass, setPass ] = useState('');
+
+    let emailChange = (e) => {
+        setEmail(e.target.value);
+    }
+    let passwordChange = (e) => {
+        setPass(e.target.value);
+    }
+    let loginHandler = async (e) => {
+        e.preventDefault();
+        await axios.post("http://localhost:4000/login", {
+            email, pass
+        }).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
     return (
         <div className='main'>
             <div className="left-part">
@@ -18,7 +40,7 @@ export default function Main() {
                     Goodspace Communications
                 </h2>
             </div>
-            <div className="right-part">
+            <form method='post' action='http://localhost:4000/login' className="right-part">
                 <div className="signup-container">
                     <h2 className="signup-heading">
                         Signup / Login
@@ -27,19 +49,19 @@ export default function Main() {
                         <label className='signup-label' htmlFor="email">Your Email ID</label>
                     </div>
                     <div className="input-container">
-                        <input className='signup-input'  type="email" name="email" id="email" />
+                        <input onChange={emailChange} required="true" className='signup-input' type="email" name="email" id="email" />
                     </div>
                     <div className='signup-label-container'>
-                        <label className='signup-label' htmlFor="password">Password</label>
+                        <label className='signup-label ' htmlFor="password">Password</label>
                     </div>
                     <div className="input-container">
-                        <input className='signup-input' type="password" name="password" id="password" />
+                        <input onChange={passwordChange} required="true" className='signup-input' type="password" name="password" id="password" />
                     </div>
                     <div className="button-container">
-                        <button className='signup-button' type='submit'>Lets Go!!</button>
+                        <button /* onClick={loginHandler} */ className='signup-button' type='submit'>Lets Go!!</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
