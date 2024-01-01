@@ -7,4 +7,26 @@
     max-height: 15vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+.logout-container{
+    padding: 0 3rem;
+}
+.logout{
+    font-size: 1.2rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(255, 0, 0, 0.74);
+    color: var(--Pure-White, #FFF);
+    font-family: Poppins;
+    font-style: normal;
+}
+.logout:hover{
+    background-color: rgba(255, 0, 0, 0.971);
+    transition: 0.2s;
+}
+.logout:active{
+    background-color: rgb(132, 5, 5);
+    transition: 0.5s;
 }

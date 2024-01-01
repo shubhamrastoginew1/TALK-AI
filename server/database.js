@@ -10,6 +10,10 @@ connect.then(() => {
 })
 
 const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
@@ -19,7 +23,14 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     chats: {
-        type: [ String ]
+        type: [ {
+            chat: {
+                type: String
+            },
+            role: {
+                type: String
+            }
+        } ]
     }
 });
 

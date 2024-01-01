@@ -1,5 +1,6 @@
 .text-container {
-    min-height: 40vh;
+    min-height: 55vh;
+    max-height: 55vh;
     width: 60%;
     color: var(--Pure-White, #FFF);
     font-family: Poppins;
@@ -11,6 +12,11 @@
     padding: 0.5rem 1rem;
     border-radius: 10px;
     margin-bottom: 1rem;
+    overflow: scroll;
+}
+
+.text-container::-webkit-scrollbar {
+    display: none;
 }
 
 .wrapper {

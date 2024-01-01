@@ -15,10 +15,22 @@ export default function Main() {
     }
     let loginHandler = async (e) => {
         e.preventDefault();
+        if(email === '' || pass === ''){
+            alert("please fill the details first");
+            return;
+        }
+        let Email = email;
         await axios.post("http://localhost:4000/login", {
-            email, pass
+            data: {
+                email: Email,
+                password: pass
+            }
         }).then(res => {
-            console.log(res);
+            localStorage.setItem('username', res.data.username);
+            if (res.data.username !== null)
+                window.location = 'http://localhost:3000/speech';
+            else
+                window.location = 'http://localhost:3000/';
         }).catch(err => {
             console.log(err);
         })
@@ -40,7 +52,7 @@ export default function Main() {
                     Goodspace Communications
                 </h2>
             </div>
-            <form method='post' action='http://localhost:4000/login' className="right-part">
+            <form className="right-part">
                 <div className="signup-container">
                     <h2 className="signup-heading">
                         Signup / Login
@@ -49,16 +61,16 @@ export default function Main() {
                         <label className='signup-label' htmlFor="email">Your Email ID</label>
                     </div>
                     <div className="input-container">
-                        <input onChange={emailChange} required="true" className='signup-input' type="email" name="email" id="email" />
+                        <input value={email} onChange={emailChange} required="true" className='signup-input' type="email" name="email" id="email" />
                     </div>
                     <div className='signup-label-container'>
                         <label className='signup-label ' htmlFor="password">Password</label>
                     </div>
                     <div className="input-container">
-                        <input onChange={passwordChange} required="true" className='signup-input' type="password" name="password" id="password" />
+                        <input value={pass} onChange={passwordChange} required="true" className='signup-input' type="password" name="password" id="password" />
                     </div>
                     <div className="button-container">
-                        <button /* onClick={loginHandler} */ className='signup-button' type='submit'>Lets Go!!</button>
+                        <button onClick={loginHandler} className='signup-button' type='submit'>Lets Go!!</button>
                     </div>
                 </div>
             </form>

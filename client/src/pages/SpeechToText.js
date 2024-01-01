@@ -1,9 +1,14 @@
 import React from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import Navbar from '../components/Navbar';
+import InnerNavbar from '../components/InnerNavbar';
 import '../css/speech.css';
+import { useEffect } from 'react';
+import { Navigate } from "react-router-dom";
+import { useState } from 'react';
+import Chats from '../components/Chats';
+import axios from 'axios';
 
-const SpeechToText = () => {
+const SpeechToText = ({ authorized }) => {
     const {
         transcript,
         listening,
@@ -11,17 +16,40 @@ const SpeechToText = () => {
         browserSupportsSpeechRecognition
     } = useSpeechRecognition();
 
+    const [ chats, setChats ] = useState('');
+    console.log("Chats in speech", chats);
+    const func = async () => {
+        if (transcript !== '') {
+            axios.post("http://localhost:4000/setChats", {
+                data: {
+                    username: localStorage.getItem('username'),
+                    Chats: transcript
+                }
+            }).then((res)=>{
+                console.log(res);
+            })
+        }
+    }
+    useEffect(() => {
+        func();
+    }, [ listening ])
+
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
 
+    if (!authorized) {
+        return <Navigate to='/' />
+    }
+
     return (
         <div className='app'>
-            <Navbar></Navbar>
+            <InnerNavbar></InnerNavbar>
 
             <div className="wrapper">
                 <div className="text-container">
-                    {transcript}
+                    {/* {transcript} */}
+                    <Chats listening={listening} chats={chats} />
                 </div>
                 {
                     listening === true ? <div className='micOn' onClick={SpeechRecognition.stopListening}><svg width="50" height="50" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 12V13C20 17.4183 16.4183 21 12 21C7.58172 21 4 17.4183 4 13V12M12 17C9.79086 17 8 15.2091 8 13V7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7V13C16 15.2091 14.2091 17 12 17Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> </div>

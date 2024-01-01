@@ -20,6 +20,10 @@ export default function Navbar() {
                 </g>
             </svg>
 
+            {/* <div className='logout-container'>
+                <button className='logout'>Logout</button>
+            </div> */}
+
         </div >
     )
 }
