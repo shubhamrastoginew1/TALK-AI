@@ -6,12 +6,12 @@ import { useState } from "react";
 
 
 function App() {
-  const [ authorized, setA ] = useState(localStorage.getItem('username') === 'null' ? false : true);
+  const [ authorized, setA ] = useState(localStorage.getItem("username") === (null) ? false : true);
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login authorized={authorized}  />} />
+          <Route path="/" element={<Login authorized={authorized} />} />
           <Route path="/speech" element={<SpeechToText authorized={authorized} />} />
         </Routes>
       </BrowserRouter>
