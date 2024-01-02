@@ -1,6 +1,8 @@
 .text-container {
     min-height: 55vh;
     max-height: 55vh;
+    min-width: 55vw;
+    max-width: 55vw;
     width: 60%;
     color: var(--Pure-White, #FFF);
     font-family: Poppins;
@@ -13,6 +15,9 @@
     border-radius: 10px;
     margin-bottom: 1rem;
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .text-container::-webkit-scrollbar {
@@ -47,4 +52,63 @@
     background-color: grey;
     margin-top: 1rem;
     padding: 1rem 2rem;
+}
+
+.textBox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.textInput-container {
+    width: 100%;
+}
+
+#textBox {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    color: var(--Pure-White, #FFF);
+    font-family: Poppins;
+    font-style: normal;
+    background-color: transparent;
+    /* border: none; */
+}
+
+.sendBtn-container>button {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    background-color: skyblue;
+    color: var(--Pure-White, #FFF);
+    font-family: Poppins;
+    font-style: normal;
+    border-radius: 10px;
+    border: none;
+}
+
+.sendBtn-container>button:hover {
+    background-color: rgb(30, 123, 160);
+    transition: 0.5s;
+}
+
+.sendBtn-container>button:active {
+    background-color: rgb(8, 74, 100);
+    transition: 0.5s;
+}
+
+video {
+    max-height: 40vh;
+    border-radius: 10px;
+}
+
+.webcam-container {}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
 }

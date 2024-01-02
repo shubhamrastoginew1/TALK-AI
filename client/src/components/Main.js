@@ -15,7 +15,7 @@ export default function Main() {
     }
     let loginHandler = async (e) => {
         e.preventDefault();
-        if(email === '' || pass === ''){
+        if (email === '' || pass === '') {
             alert("please fill the details first");
             return;
         }

@@ -6,7 +6,7 @@ import { useState } from "react";
 
 
 function App() {
-  const [ authorized, setA ] = useState(localStorage.getItem("username") === (null) ? false : true);
+  const [ authorized, setA ] = useState(((localStorage.getItem("username") === 'null') || (localStorage.getItem("username") === null)) ? false : true);
   return (
     <>
       <BrowserRouter>

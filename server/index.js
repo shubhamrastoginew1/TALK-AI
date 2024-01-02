@@ -11,6 +11,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+const OpenAI = require("openai");
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API });
+
+async function main(msg) {
+    const completion = await openai.chat.completions.create({
+        messages: [ { "role": "system", "content": "You are an tech interviewer." },
+        { "role": "user", "content": msg }
+        ],
+        model: "gpt-3.5-turbo",
+    });
+
+    return (completion.choices[ 0 ].message.content);
+}
 
 
 app.post('/login', async (req, res) => {
@@ -56,6 +69,7 @@ app.get('/getChats', async (req, res) => {
         res.send(USER[ 0 ].chats);
     })
 });
+
 app.post('/setChats', async (req, res) => {
     const d = req.body.data;
     await User.find({ username: d.username }).then(async (USER) => {
@@ -65,15 +79,18 @@ app.post('/setChats', async (req, res) => {
             newChat.push(USER[ 0 ].chats[ i ]);
         }
         newChat.push({ 'chat': d.Chats, 'role': 'user' });
-        await User.findOneAndUpdate({ username: d.username }, {
-            _id: USER[ 0 ]._id,
-            username: USER[ 0 ].username,
-            email: USER[ 0 ].email,
-            password: USER[ 0 ].password,
-            chats: newChat
-        }).then(() => {
-            res.send({ "data": "updated" });
-        });
+        await main(d.Chats).then(async (ai) => {
+            newChat.push({ 'chat': ai, 'role': 'ai' });
+            await User.findOneAndUpdate({ username: d.username }, {
+                _id: USER[ 0 ]._id,
+                username: USER[ 0 ].username,
+                email: USER[ 0 ].email,
+                password: USER[ 0 ].password,
+                chats: newChat
+            }).then(() => {
+                res.send(ai);
+            });
+        })
     })
 
     // if (USER.chats !== undefined) {
