@@ -4,7 +4,7 @@ import '../css/navbar.css';
 export default function InnerNavbar() {
     const logoutHandler = () => {
         localStorage.setItem('username', null);
-        window.location = 'http://localhost:3000/';
+        window.location = 'https://shubhamrastogi.netlify.app/';
     }
     return (
         <div className='navbar'>
