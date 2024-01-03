@@ -28,9 +28,9 @@ export default function Main() {
         }).then(res => {
             localStorage.setItem('username', res.data.username);
             if (res.data.username !== null)
-                window.location = 'http://localhost:3000/speech';
+                window.location = 'https://shubhamrastogi.netlify.app/speech';
             else
-                window.location = 'http://localhost:3000/';
+                window.location = 'https://shubhamrastogi.netlify.app/';
         }).catch(err => {
             console.log(err);
         })
