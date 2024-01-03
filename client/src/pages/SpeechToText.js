@@ -35,14 +35,14 @@ const SpeechToText = ({ authorized }) => {
 
     const onClickHandler = async () => {
         if (inputText !== '') {
-            await axios.post("http://localhost:4000/setChats", {
+            await axios.post("https://goodspace-task-sd34.onrender.com/setChats", {
                 data: {
                     username: localStorage.getItem('username'),
                     Chats: inputText
                 }
             }).then(async (ai) => {
                 speechHandler(m, ai.data);
-                await axios.get("http://localhost:4000/getChats", {
+                await axios.get("https://goodspace-task-sd34.onrender.com/getChats", {
                     headers: {
                         username: localStorage.getItem('username')
                     }
@@ -58,7 +58,7 @@ const SpeechToText = ({ authorized }) => {
 
     const func = async () => {
         if (ch.length === 0) {
-            await axios.get("http://localhost:4000/getChats", {
+            await axios.get("https://goodspace-task-sd34.onrender.com/getChats", {
                 headers: {
                     username: localStorage.getItem('username')
                 }
@@ -68,7 +68,7 @@ const SpeechToText = ({ authorized }) => {
         }
         if (listening === false && transcript !== '') {
             setChats(transcript);
-            await axios.post("http://localhost:4000/setChats", {
+            await axios.post("https://goodspace-task-sd34.onrender.com/setChats", {
                 data: {
                     username: localStorage.getItem('username'),
                     Chats: transcript
@@ -84,7 +84,7 @@ const SpeechToText = ({ authorized }) => {
                 //     }).
                 then(async (ai) => {
                     speechHandler(m, ai.data);
-                    await axios.get("http://localhost:4000/getChats", {
+                    await axios.get("https://goodspace-task-sd34.onrender.com/getChats", {
                         headers: {
                             username: localStorage.getItem('username')
                         }

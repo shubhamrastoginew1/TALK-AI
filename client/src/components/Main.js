@@ -20,7 +20,7 @@ export default function Main() {
             return;
         }
         let Email = email;
-        await axios.post("http://localhost:4000/login", {
+        await axios.post("https://goodspace-task-sd34.onrender.com/login", {
             data: {
                 email: Email,
                 password: pass
