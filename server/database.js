@@ -5,9 +5,7 @@ const connect = mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${pro
 connect.then(() => {
     console.log("DB connected");
 }).catch((err) => {
-    console.log("DB error");
-    console.log(process.env);
-})
+    console.log("DB error");})
 
 const userSchema = new mongoose.Schema({
     username: {
