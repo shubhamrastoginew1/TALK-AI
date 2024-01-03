@@ -111,7 +111,7 @@ const SpeechToText = ({ authorized }) => {
         <div className='app'>
             <InnerNavbar></InnerNavbar>
             <div className='main-wrapper'>
-                <Webcam/>
+                <Webcam />
                 <div className="wrapper">
                     <div className="text-container">
                         {/* {transcript} */}

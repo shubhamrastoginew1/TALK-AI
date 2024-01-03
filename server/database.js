@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const connect = mongoose.connect(`mongodb+srv://${[ process.env.DB_USERNAME ]}:${process.env.DB_PASSWORD}@cluster0.pyyl44d.mongodb.net/`);
+const connect = mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.pyyl44d.mongodb.net/`);
 connect.then(() => {
     console.log("DB connected");
 }).catch((err) => {
