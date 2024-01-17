@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .app{
-    background: url('https://t3.ftcdn.net/jpg/05/88/10/28/360_F_588102895_AxkhLTjt3pQasSnaH3oxKyhpJIC7d0ib.jpg') repeat-y center center/cover;
+    background: url('https://s3-alpha-sig.figma.com/img/f92d/0a41/878799f848da9fe7de85284851b01be7?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KsqOQ81PV23YW8Vk4tY3Zpk3cP3kdGgp1ZUPDccwWY0FwST4fwvOvH6nvxakp9KdOOfpKJmdcucWoCCHES68s-ZqfEPV9G2jeeOR4C~t8Mtu8I8dvV3NYAcvSckS5pT82CFayTrIzcSgb2Sm~j6zanV2YORez4MykXxE-9tvpXuMy2HB4z9ACTbg~NWpqJHvCldiHvBKSVBhyPVrfKVKQMR5CcQRaAztSwaEq25dbrZF~HmJPQr~~EQVkJHbcxznq948ZtAhbNJfuZ77m62ZwxkbJaUbLlgKZ9CIHKZwu0DHCo6IxVl6wTVYZKCjykrZ9JVh5bd859kfNnU8arJaYw__') repeat-y center center/cover;
     min-height: 100vh;
     width: 99vw;
     position: absolute;
