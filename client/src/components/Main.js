@@ -21,7 +21,7 @@ export default function Main() {
             return;
         }
         let Email = email;
-        let Pass = pas;
+        let Pass = pass;
         setEmail('');
         setPass('');
         await axios.post("https://goodspace-task-sd34.onrender.com/login", {
