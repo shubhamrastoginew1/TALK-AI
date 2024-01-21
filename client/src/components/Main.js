@@ -3,10 +3,12 @@ import '../css/main.css';
 import { useState } from 'react';
 import axios from 'axios';
 import mainlogo from '../assets/mainlogo.png';
+import '../css/speech.css';
 
 export default function Main() {
     const [ email, setEmail ] = useState('');
     const [ pass, setPass ] = useState('');
+    const [spinner, setSpinner] = useState(null);
 
     let emailChange = (e) => {
         setEmail(e.target.value);
@@ -24,6 +26,7 @@ export default function Main() {
         let Pass = pass;
         setEmail('');
         setPass('');
+        setSpinner(1);
         await axios.post("https://goodspace-task-sd34.onrender.com/login", {
             data: {
                 email: Email,
@@ -31,10 +34,14 @@ export default function Main() {
             }
         }).then(res => {
             localStorage.setItem('username', res.data.username);
+            setSpinner(null);
             if (res.data.username !== null)
                 window.location = 'https://shubhamrastogi.netlify.app/speech';
-            else
+            else{
+                alert("Wrong Details");
                 window.location = 'https://shubhamrastogi.netlify.app/';
+            }
+                
         }).catch(err => {
             console.log(err);
         })
@@ -42,6 +49,9 @@ export default function Main() {
 
     return (
         <div className='main'>
+            {
+                    spinner ? <div className='spin-wrapper'><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div> : ""
+            }
             <div className="left-part">
                 <div className="main-logo-wrapper-main">
                     <img src={mainlogo} alt="logo" id='mainlogo' />
