@@ -21,10 +21,13 @@ export default function Main() {
             return;
         }
         let Email = email;
+        let Pass = pas;
+        setEmail('');
+        setPass('');
         await axios.post("https://goodspace-task-sd34.onrender.com/login", {
             data: {
                 email: Email,
-                password: pass
+                password: Pass
             }
         }).then(res => {
             localStorage.setItem('username', res.data.username);
