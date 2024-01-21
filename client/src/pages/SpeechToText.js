@@ -2,10 +2,9 @@ import React from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import InnerNavbar from '../components/InnerNavbar';
 import '../css/speech.css';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Navigate } from "react-router-dom";
 import { useState } from 'react';
-// import Chats from '../components/Chats';
 import axios from 'axios';
 import '../css/chat.css';
 import Webcam from 'react-webcam';
@@ -21,6 +20,7 @@ const SpeechToText = ({ authorized }) => {
     const [ chats, setChats ] = useState('');
     const [ ch, setCh ] = useState([]);
     const [ inputText, setText ] = useState('');
+    const [ spinner, setSpinner ] = useState(null);
 
     const onChangeHandler = (e) => {
         setText(e.target.value);
@@ -35,12 +35,16 @@ const SpeechToText = ({ authorized }) => {
 
     const onClickHandler = async () => {
         if (inputText !== '') {
+            let temp = inputText;
+            setText('');
+            setSpinner(1);
             await axios.post("https://goodspace-task-sd34.onrender.com/setChats", {
                 data: {
                     username: localStorage.getItem('username'),
-                    Chats: inputText
+                    Chats: temp
                 }
             }).then(async (ai) => {
+                setSpinner(null);
                 speechHandler(m, ai.data);
                 await axios.get("https://goodspace-task-sd34.onrender.com/getChats", {
                     headers: {
@@ -67,32 +71,24 @@ const SpeechToText = ({ authorized }) => {
             })
         }
         if (listening === false && transcript !== '') {
+            setSpinner(1);
             setChats(transcript);
             await axios.post("https://goodspace-task-sd34.onrender.com/setChats", {
                 data: {
                     username: localStorage.getItem('username'),
                     Chats: transcript
                 }
-            }).
-                // then(async (res) => {
-                //     setChats(res.data);
-                //     await axios.post("http://localhost:4000/setChats", {
-                //         data: {
-                //             username: localStorage.getItem('username'),
-                //             Chats: res.data
-                //         }
-                //     }).
-                then(async (ai) => {
-                    speechHandler(m, ai.data);
-                    await axios.get("https://goodspace-task-sd34.onrender.com/getChats", {
-                        headers: {
-                            username: localStorage.getItem('username')
-                        }
-                    }).then((res) => {
-                        setCh(res.data);
-                    })
+            }).then(async (ai) => {
+                setSpinner(null);
+                speechHandler(m, ai.data);
+                await axios.get("https://goodspace-task-sd34.onrender.com/getChats", {
+                    headers: {
+                        username: localStorage.getItem('username')
+                    }
+                }).then((res) => {
+                    setCh(res.data);
                 })
-            // });
+            })
         }
     }
     useEffect(() => {
@@ -107,15 +103,17 @@ const SpeechToText = ({ authorized }) => {
         return <Navigate to='/' />
     }
 
+
     return (
-        <div className='app'>
+        <div className='app' >
             <InnerNavbar></InnerNavbar>
             <div className='main-wrapper'>
                 <Webcam />
-                <div className="wrapper">
+                <div className="wrapper" >
+                    {
+                        spinner ? <div className='spin-wrapper'><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div> : ""
+                    }
                     <div className="text-container">
-                        {/* {transcript} */}
-                        {/* <Chats listening={listening} ch={ch} transcript={transcript} /> */}
                         <div className='messages'>
                             {
                                 ch.map((c) => {

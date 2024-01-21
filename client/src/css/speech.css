@@ -80,7 +80,7 @@
 .sendBtn-container>button {
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
-    background-color: skyblue;
+    background-color: rgb(39, 193, 39);
     color: var(--Pure-White, #FFF);
     font-family: Poppins;
     font-style: normal;
@@ -89,12 +89,12 @@
 }
 
 .sendBtn-container>button:hover {
-    background-color: rgb(30, 123, 160);
+    background-color: rgb(33, 140, 33);
     transition: 0.5s;
 }
 
 .sendBtn-container>button:active {
-    background-color: rgb(8, 74, 100);
+    background-color: rgb(19, 79, 19);
     transition: 0.5s;
 }
 
@@ -111,4 +111,65 @@ video {
     width: 100%;
     justify-content: space-around;
     align-items: center;
+}
+
+
+
+.spin-wrapper {
+    z-index: 100;
+    position: absolute;
+    background-color: black;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.lds-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#textBox::placeholder{
+    color: rgb(208, 198, 198);
 }

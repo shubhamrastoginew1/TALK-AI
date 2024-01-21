@@ -9,10 +9,12 @@
     align-items: center;
     justify-content: space-between;
 }
-.logout-container{
+
+.logout-container {
     padding: 0 3rem;
 }
-.logout{
+
+.logout {
     font-size: 1.2rem;
     padding: 0.7rem 1.5rem;
     border-radius: 10px;
@@ -22,11 +24,45 @@
     font-family: Poppins;
     font-style: normal;
 }
-.logout:hover{
+
+.logout:hover {
     background-color: rgba(255, 0, 0, 0.971);
     transition: 0.2s;
 }
-.logout:active{
+
+.logout:active {
     background-color: rgb(132, 5, 5);
     transition: 0.5s;
+}
+
+.main-logo-wrapper {
+    max-width: 12vh;
+    max-height: 12vh;
+}
+.main-logo-wrapper-main {
+    max-width: 18vh;
+    max-height: 18vh;
+}
+
+#mainlogo {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.brand-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#brand-para {
+    margin-top: 0.3rem;
+    margin-left: -0.5rem;
+    color: var(--Pure-White, #FFF);
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 900;
 }
